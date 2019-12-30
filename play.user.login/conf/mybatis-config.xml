@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.user.login.dbpool.DbcpDataSourceFactory" alias="RHEA_DBCP" />
+    </typeAliases>
+    <environments default="default">
+        <environment id="default">
+            <transactionManager type="JDBC"/>
+            <dataSource type="RHEA_DBCP">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+                <property name="poolMaximumIdleConnections" value="200"/>
+                <property name="poolMaximumActiveConnections" value="300"/>
+                <property name="poolTimeToWait" value="30000"/>
+                <property name="driver.sslConnection" value="${sslConnection}"/>
+                <property name="driver.sslTrustStoreLocation" value="${sslTrustStoreLocation}"/>
+                <property name="driver.sslTrustStorePassword" value="${sslTrustStorePassword}"/>
+                <property name="removeAbandoned" value="true"/>
+                <property name="logAbandoned" value="true"/>
+                <property name="removeAbandonedTimeout" value="300"/>
+
+                <!--test idle connection healthy state config-->
+                <property name="testWhileIdle" value="true"/>
+                <property name="validationQueryTimeout" value="2"/>
+                <property name="validationQuery" value="select 1"/>
+                <property name="timeBetweenEvictionRunsMillis" value="20000"/>
+                <property name="numTestsPerEvictionRun" value="200"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/UserProfileMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,56 @@
+<assembly>
+    <id>dist</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <!-- set to false the archive created will unzip its content to the current directory. -->
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <!-- copy file from target folder -->
+        <fileSet>
+            <directory>${basedir}/target</directory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+            <outputDirectory></outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}/target/lib</directory>
+            <outputDirectory>lib</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}/target/conf</directory>
+            <outputDirectory>conf</outputDirectory>
+            <fileMode>600</fileMode>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+
+        <!-- copy file from source folder -->
+        <fileSet>
+            <directory>${basedir}/dist</directory>
+            <outputDirectory></outputDirectory>
+            <fileMode>744</fileMode>
+            <lineEnding>unix</lineEnding>
+            <includes>
+                <include>start</include>
+                <include>stop</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}/src/main/resources</directory>
+            <excludes>
+                <exclude>logback-test.xml</exclude>
+            </excludes>
+            <outputDirectory>conf</outputDirectory>
+            <fileMode>600</fileMode>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+    </fileSets>
+
+   <!-- <files>
+        <file>
+            <source>${basedir}/dist/README</source>
+        </file>
+    </files>-->
+</assembly>

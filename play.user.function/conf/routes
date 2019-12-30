@@ -1,0 +1,5 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+POST         /v1/profile    com.user.function.controllers.PrepareController.prepare

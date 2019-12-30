@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.user.function.mapper.UserProfileMapper">
+    <resultMap id="userProfileMap" type="com.user.function.entities.UserProfile">
+        <result property="firstName" column="id"/>
+        <result property="lastName" column="name"/>
+        <result property="fullName" column="email"/>
+    </resultMap>
+
+    <select id="getUserProfileById" parameterType="String" resultMap="userProfileMap">
+        select id, name, email, age from test.user
+        WHERE ID = #{userID}
+    </select>
+</mapper>
